@@ -5,11 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost', // or your database host
-      port: 5432,
-      username: 'myuser',
-      password: 'mypassword',
-      database: 'mydb',
+      // Use env var when available; otherwise fall back to your local connection URL.
+      url: 'postgresql://teacheron_user:StrongPassword123@localhost:5432/teacheron_db',
       autoLoadEntities: true, // Automatically load all entities
       synchronize: true, // Auto sync (disable in production)
     }),
